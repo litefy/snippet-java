@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.net.URL;
 
 /**  
  *   
@@ -47,19 +48,27 @@ public class DeleteDirectory {
 	}
 	
 	private static void catTxt(File file) {
+		Reader reader = null;
 		try {
-			Reader reader = new InputStreamReader(new FileInputStream(file));
+			 reader = new InputStreamReader(new FileInputStream(file));
 			int tmpChar;
 			System.out.print("\t");
 			while ((tmpChar = reader.read()) != -1) {
 				System.out.print((char)tmpChar);
 			}
-			reader.close();
 			System.out.println();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			if (null != reader) {
+				try {
+					reader.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 			
 	}
