@@ -52,7 +52,7 @@ public class DeleteDirectory {
 		try {
 			 reader = new InputStreamReader(new FileInputStream(file));
 			int tmpChar;
-			System.out.print("\t");
+			System.out.println();
 			while ((tmpChar = reader.read()) != -1) {
 				System.out.print((char)tmpChar);
 			}
